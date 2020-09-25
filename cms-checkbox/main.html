@@ -1,0 +1,21 @@
+<!-- Checkbox Functions -->
+<script>
+// all functions take an argument of elementID (which should be a string of the element to be manipulated's ID)
+    // set checkbox value to checked
+    function check(elementID) {
+        document.getElementById(elementID).checked = true;
+    }
+    // set checkbox value to unchecked
+    function uncheck(elementID) {
+        document.getElementById(elementID).checked = false;
+    }
+    // query the state of a checkbox
+    function queryCheckState(elementID) {
+            var checkState = document.getElementById(elementID).checked;
+        console.log(checkState);
+    }
+</script>
+<!-- Element Markup for CMS List (example) -->
+<label class="w-checkbox">
+    <input type="checkbox" id="checkbox{{wf {&quot;path&quot;:&quot;slug&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input"><span class="w-form-label">Label Text for {{wf {&quot;path&quot;:&quot;name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}</span>
+</label>
