@@ -1,0 +1,16 @@
+<script>
+    var Webflow = Webflow || [];
+    Webflow.push(function() {
+    
+      // === Custom Form Handling ===
+      
+      // unbind webflow form handling
+      $(document).off('submit');
+    
+      // new form handling
+      $('form').submit(function(evt) {
+        evt.preventDefault();
+        window.alert("Custom code / actions would go here.");
+      });
+    });
+</script>
