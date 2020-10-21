@@ -1,16 +1,11 @@
 <script>
-    var Webflow = Webflow || [];
-    Webflow.push(function() {
-    
-      // === Custom Form Handling ===
-      
-      // unbind webflow form handling
-      $(document).off('submit');
-    
-      // new form handling
-      $('form').submit(function(evt) {
-        evt.preventDefault();
-        window.alert("Custom code / actions would go here.");
-      });
+  // Unbind webflow form handling (not needed/not in use)
+  //$(document).off('submit');
+  Webflow.push(function() {
+    // Disable submitting form fields during development
+    $('form').submit(function() {
+      alert("Form submissions have been disabled during development.");
+      return false;
     });
-</script>
+  });
+  </script>
