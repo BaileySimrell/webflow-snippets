@@ -1,0 +1,18 @@
+<script>
+    Webflow.push(function() {
+      $form = $('#signup-form').submit(function() {
+        $.ajax({
+          type: this.method,
+          url: this.action,
+          data: $(this).serialize(), 
+          success: function(data) {
+            $form.hide().next('.w-form-done').show().next('.w-form-fail').hide();
+          },
+          error: function() {
+            $form.siblings('.w-form-fail').show();
+          },
+        });
+        return false;
+      });
+    });
+    </script>
