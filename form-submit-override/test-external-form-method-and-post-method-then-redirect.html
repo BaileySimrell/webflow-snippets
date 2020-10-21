@@ -1,0 +1,10 @@
+<script>
+    Webflow.push(function() {
+      $('#email-form').submit(function() {
+        $.post(this.action, $(this).serialize(), function(data) {
+          console.log('success', data);
+        });
+        return false;
+      });
+    });
+    </script>
