@@ -1,0 +1,12 @@
+<script>
+    // when the form is submitted
+    $('.form-important-class').submit(()=>{	
+        // wait 1000ms (so we have time to see the success wrapper show)
+        setTimeout(()=>{
+            // click our .form-success-trigger
+          // this class has an Interaction on it that runs our Lottie icon animation
+            $('.form-success-trigger').click();
+      },1000);
+      // NICE!!!!!!!!
+    });
+</script>
