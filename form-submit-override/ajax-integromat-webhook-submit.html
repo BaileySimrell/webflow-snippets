@@ -1,46 +1,46 @@
 <script>
-    // This is an example
-    $('form[action^="https://hook.integromat.com/86ka7hu9ua1dhxy9ixd9a5eicu9j8zbh"]').each(function(i, el) {
-      form = $(el);
-      form.submit(function(e) {
-        // STOP THE FORM FROM SUBMITTING
-        e.preventDefault();
-        form = $(e.target);
-        // GET THE FORM'S ACTION PARAMETER
-        action = form.attr('action');
-        // DISABLE ALL BUTTONS IN FORM
-        $(e.target).find('input[type=submit]').attr("disabled", true);
-        // GET REDIRECT URL
-        var dataRedirect = $(e.target).attr("redirect");
-        // GET & SET "WAITING TEXT" FROM BUTTON - I.E. "SENDING..." ONCE FORM IS BEING SUBMITTED
-        var dataSubmitText = $(e.target).find('input[type=submit]').attr("value");
-        var dataWait = $(e.target).find('input[type=submit]').attr("data-wait");
-        $(e.target).find('input[type=submit]').attr("value", dataWait);
-        // SUBMIT THE FORM VIA AJAX
-        $.ajax({
-          url: action,
-          method: "POST",
-          dataType: "JSON",
-          data: new FormData(this),
-          processData: false,
-          contentType: false,
-          complete: function(){
-              alert("Success");
-            if (dataRedirect !== undefined) {
-                // SUCCESSFUL SUBMISSION - REDIRECT TO PAGE (IF SET)
-                window.location.href = dataRedirect;
-              } else {
-                // SUCCESSFUL SUBMISSION - HIDE THE FORM AND SHOW THE SUCCESS MESSAGE
-                // parent = $(form.parent());
-                $(form).css('display', 'none');
-                $(form).siblings('.w-form-done').css('display', 'block');
-                //enable all buttons in form
-                $(form).find('input[type=submit]').attr("disabled", false);
-                $(form).find('input[type=submit]').attr("value", dataSubmitText);
-              }
-          }
-        });
+  // 3RD PARTY FORM - WITH FILE UPLOAD AND NATIVE INTERACTIONS 
+  // (INCLUDES DISABLING THE SUBMIT BUTTON & SHOWING WAITING TEXT)
+  $('form[action^="https://hook.integromat.com/86ka7hu9ua1dhxy9ixd9a5eicu9j8zbh"]').each(function(i, el) {
+    form = $(el);
+    form.submit(function(e) {
+      // STOP THE FORM FROM SUBMITTING
+      e.preventDefault();
+      form = $(e.target);
+      // GET THE FORM'S ACTION PARAMETER AND ADD ".JSON" TO THE END
+      action = form.attr('action');
+      // DISABLE ALL BUTTONS IN FORM
+      $(e.target).find('input[type=submit]').attr("disabled", true);
+      // GET REDIRECT URL
+      var dataRedirect = $(e.target).attr("redirect");
+      // GET & SET "WAITING TEXT" FROM BUTTON - I.E. "SENDING..." ONCE FORM IS BEING SUBMITTED
+      var dataSubmitText = $(e.target).find('input[type=submit]').attr("value");
+      var dataWait = $(e.target).find('input[type=submit]').attr("data-wait");
+      $(e.target).find('input[type=submit]').attr("value", dataWait);
+      // SUBMIT THE FORM VIA AJAX
+      $.ajax({
+        url: action,
+        method: "POST",
+        dataType: "JSON",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        complete: function(){
+        	alert("Success");
+          if (dataRedirect !== undefined) {
+              // SUCCESSFUL SUBMISSION - REDIRECT TO PAGE (IF SET)
+              window.location.href = dataRedirect;
+            } else {
+              // SUCCESSFUL SUBMISSION - HIDE THE FORM AND SHOW THE SUCCESS MESSAGE
+              // parent = $(form.parent());
+              $(form).css('display', 'none');
+              $(form).siblings('.w-form-done').css('display', 'block');
+              //enable all buttons in form
+              $(form).find('input[type=submit]').attr("disabled", false);
+              $(form).find('input[type=submit]').attr("value", dataSubmitText);
+            }
+        }
       });
     });
-  </script>
-  
+  });
+</script>
