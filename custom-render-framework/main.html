@@ -1,0 +1,25 @@
+<!-- Feature Detection -->
+<script>
+    function supportsTemplate() {
+        return 'content' in document.createElement('template');
+    }
+    if (supportsTemplate()) {
+        // Good to go!
+    } else {
+        // Use old templating techniques or libraries.
+    }
+</script>
+<!-- Template Content Declaration -->
+<template id="mytemplate">
+    <img src="" alt="great image">
+    <div class="comment"></div>
+</template>
+<!-- Creating Dynamic Element -->
+<script>
+    var t = document.querySelector('#mytemplate');
+    // Populate the src at runtime.
+    t.content.querySelector('img').src = 'logo.png';
+
+    var clone = document.importNode(t.content, true);
+    document.body.appendChild(clone);
+</script>
