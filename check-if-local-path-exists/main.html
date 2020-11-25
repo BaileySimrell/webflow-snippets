@@ -1,0 +1,15 @@
+<script>
+    // this can be really useful when automating items into WF CMS and redirecting to the newly created item pages (by first checking to see if /path exists)
+$.ajax({
+    url:'/error/access-denied',
+    type:'HEAD',
+    error: function()
+    {
+        console.log('file does not exist');
+    },
+    success: function()
+    {
+        console.log('file exists');
+    }
+});
+</script>
