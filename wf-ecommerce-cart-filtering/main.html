@@ -1,6 +1,5 @@
 <script>
-// this is a rough draft
-// a brute-force, simple working solution for now
+
 function refreshRelatedItems () {
     $('.w-commerce-commercecartitem').each(function( index, element ) {
         // if cart items  exist and have titles with length > 0
@@ -9,29 +8,31 @@ function refreshRelatedItems () {
 
             // if product title includes 'Dissolvable Disinfecting Tablets' in product title
             if ($(element).find('.cart-product-title').text().includes('Dissolvable Disinfecting Tablets')) {
-                console.log('true');
-                $('#related-item-3').remove();
-            } else { console.log('false'); }
-            console.log($(element).find('.cart-product-title').text());
-
+                //$('#related-item-3').remove();
+                $('#related-item-3').css("display", "none");
+            } 
+            
             // if product title includes 'Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting' in product title
             if ($(element).find('.cart-product-title').text().includes('Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting')) {
-                console.log('true');
-                $('#related-item-2').remove();
-            } else { console.log('false'); }
-            console.log($(element).find('.cart-product-title').text());
+                $('#related-item-2').css("display", "none");
+            } 
 
             // if product title includes 'EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer' in product title
             if ($(element).find('.cart-product-title').text().includes('EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer')) {
-                console.log('true');
-                $('#related-item-1').remove();
-            } else { console.log('false'); }
-            console.log($(element).find('.cart-product-title').text());
+                $('#related-item-1').css("display", "none");
+            } 
+
+            if ( $('.recommended-item-wrap').length < 1 ) {
+                $('#related-items-h4').css("display", "none");
+            } else { $('.related-items-h4').css("display", "block"); }
 
         }
     });
 }
-$(document).ready(function () {
+
+document.addEventListener("DOMContentLoaded", function(event) { 
     refreshRelatedItems();
+    setInterval(function(){ refreshRelatedItems(); console.log('Refreshed cart items.'); }, 1000);
 });
+
 </script>
