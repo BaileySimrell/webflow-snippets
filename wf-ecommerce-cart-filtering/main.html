@@ -1,11 +1,37 @@
 <script>
 // this is a rough draft
-$(document).ready(function () {
+// a brute-force, simple working solution for now
+function refreshRelatedItems () {
     $('.w-commerce-commercecartitem').each(function( index, element ) {
-      if ( $(element).find('.w-commerce-commercecartiteminfo').text().length > 0 ) {
-        // $(element).addClass("has-content");
-  console.log(element);
-      }
+        // if cart items  exist and have titles with length > 0
+      if ( $(element).find('.cart-product-title').text().length > 0 ) {
+          // if product title exists, check if it equals any of the elements in 'related items'
+
+            // if product title includes 'Dissolvable Disinfecting Tablets' in product title
+            if ($(element).find('.cart-product-title').text().includes('Dissolvable Disinfecting Tablets')) {
+                console.log('true');
+                $('#related-item-3').remove();
+            } else { console.log('false'); }
+            console.log($(element).find('.cart-product-title').text());
+
+            // if product title includes 'Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting' in product title
+            if ($(element).find('.cart-product-title').text().includes('Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting')) {
+                console.log('true');
+                $('#related-item-2').remove();
+            } else { console.log('false'); }
+            console.log($(element).find('.cart-product-title').text());
+
+            // if product title includes 'EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer' in product title
+            if ($(element).find('.cart-product-title').text().includes('EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer')) {
+                console.log('true');
+                $('#related-item-1').remove();
+            } else { console.log('false'); }
+            console.log($(element).find('.cart-product-title').text());
+
+        }
     });
-  });
+}
+$(document).ready(function () {
+    refreshRelatedItems();
+});
 </script>
