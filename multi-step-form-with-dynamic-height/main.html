@@ -1,0 +1,71 @@
+<script>
+    // get heights of each step
+    var step1Height = $('#multistep1').height();
+    var step2Height = $('#multistep2').height();
+    var step3Height = $('#multistep3').height();
+    step1Height = (step1Height + "px");
+    step2Height = (step2Height + "px");
+    step3Height = (step3Height + "px");
+    console.log(step1Height);
+    console.log(step2Height);
+    console.log(step3Height);
+    // refresh variables if window is resized
+    $(window).resize(function () {
+      step1Height = $('#multistep1').height();
+      step2Height = $('#multistep2').height();
+      step3Height = $('#multistep3').height();
+      step1Height = (step1Height + "px");
+      step2Height = (step2Height + "px");
+      step3Height = (step3Height + "px");
+      console.log(step1Height);
+        console.log(step2Height);
+        console.log(step3Height);
+    });
+    // on load, set height to height of slide 1
+    $('#slide1-contain').height(step1Height);
+    $('#checkout-container-height').height(step1Height);
+    // on click of next btn to slide 2, set height to slide 2
+    $( "#go-to-slide-2" ).click(function() {
+      $('#slide2-contain').height(step2Height);
+      $('#slide1-contain').height(step2Height);
+        $('#checkout-container-height').height('auto');
+      scrollToTop();
+    });
+    // on click of back btn to slide 1, set height to slide 1
+    $( "#back-to-slide-1" ).click(function() {
+      $('#slide2-contain').height(step1Height);
+      $('#slide1-contain').height(step1Height);
+        $('#checkout-container-height').height(step1Height);
+      scrollToTop();
+    });
+    // on click of next btn to slide 3, set height to slide 3
+    $( "#go-to-slide-3" ).click(function() {
+      $('#slide2-contain').height(step3Height);
+      $('#slide1-contain').height(step3Height);
+      $('#slide3-contain').height(step3Height);
+        $('#checkout-container-height').height($('#multistep3').height());
+      scrollToTop();
+    });
+    // on click of back btn to slide 2, set height to slide 2
+    $( "#back-to-slide-2" ).click(function() {
+      $('#slide2-contain').height(step2Height);
+      $('#slide1-contain').height(step2Height);
+      $('#slide3-contain').height(step2Height);
+        $('#checkout-container-height').height(step2Height);
+      scrollToTop();
+    });
+    </script>
+    <script>
+    var Webflow = Webflow || [];
+    Webflow.push(function() {
+     var l = $('#multi-step-checkout-slider .w-slider-arrow-left');
+     var r = $('#multi-step-checkout-slider .w-slider-arrow-right');
+     $('#multi-step-checkout-slider')
+       .on('click', '.back-button-skye', function() {
+         l.trigger('tap');
+       })
+       .on('click', '.next-button-skye', function() {
+         r.trigger('tap');
+       });
+    });
+    </script>
