@@ -1,0 +1,70 @@
+<script>
+  
+    // function to programmatically hide/show elements based on ID
+     function toggleItem (itemID, displayProp) {
+         $('#' + itemID).css("display", displayProp);
+     }
+ 
+     // related items
+     var item1 = {
+         "title":"EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer",
+         "elementID":"related-item-1"
+     }
+     var item2 = {
+         "title":"Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting",
+         "elementID":"related-item-2"
+     }
+     var item3 = {
+         "title":"EPA Registered COVID-19 Dissolvable Disinfecting Tablets (Effervescent) 100 Ct/​Bottle",
+         "elementID":"related-item-3"
+     }
+ 
+     //  store related items in array to loop through
+     var relatedItems = [item1, item2, item3];
+   
+       var relatedItemLiveCount = 3;
+   
+       function checkLiveCount () {
+                   if (relatedItemLiveCount < 1) {
+                     console.log('quantity of current items in cart is' + " " + relatedItemLiveCount);
+                       toggleItem('related-items-header-toggle', 'none');
+                   }
+                   else {
+                     toggleItem('related-items-header-toggle', 'block');
+                     console.log('quantity of current items in cart is' + " " + relatedItemLiveCount);
+                   }
+               }
+ 
+     function refreshRelatedItems () {
+       
+     // get current items in cart, store to variable
+     var itemsInCart = $('.cart-product-title-current').text();
+     // get current quantity of items in cart, store to variable
+     var quantityOfItemsInCart = $('.cart-product-title-current').length;
+       
+         $.each(relatedItems, function(){
+           checkLiveCount();
+           console.log(this.title);
+           console.log(this.elementID);
+           if(itemsInCart.includes(this.title)){
+              toggleItem(this.elementID, 'none');
+              console.log(this.elementID + ' set to display: none');
+              quantityOfItemsInCart = (quantityOfItemsInCart - 1);
+           } else {
+               toggleItem(this.elementID, 'flex');
+               console.log(this.elementID + ' set to display: flex');
+             quantityOfItemsInCart = (quantityOfItemsInCart - 1);
+           }
+           
+           checkLiveCount();
+           
+         });
+     }
+     
+     document.addEventListener("DOMContentLoaded", function(event) { 
+           console.log('DOMContentLoaded');
+         refreshRelatedItems();
+         setInterval(function(){ refreshRelatedItems(); console.log('Refreshed cart items.'); }, 1000);
+     });
+
+ </script>
