@@ -1,38 +1,55 @@
 <script>
 
-function refreshRelatedItems () {
-    $('.w-commerce-commercecartitem').each(function( index, element ) {
-        // if cart items  exist and have titles with length > 0
-      if ( $(element).find('.cart-product-title').text().length > 0 ) {
-          // if product title exists, check if it equals any of the elements in 'related items'
-
-            // if product title includes 'Dissolvable Disinfecting Tablets' in product title
-            if ($(element).find('.cart-product-title').text().includes('Dissolvable Disinfecting Tablets')) {
-                //$('#related-item-3').remove();
-                $('#related-item-3').css("display", "none");
-            } 
-            
-            // if product title includes 'Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting' in product title
-            if ($(element).find('.cart-product-title').text().includes('Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting')) {
-                $('#related-item-2').css("display", "none");
-            } 
-
-            // if product title includes 'EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer' in product title
-            if ($(element).find('.cart-product-title').text().includes('EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer')) {
-                $('#related-item-1').css("display", "none");
-            } 
-
-            if ( $('.recommended-item-wrap').length < 1 ) {
-                $('#related-items-h4').css("display", "none");
-            } else { $('.related-items-h4').css("display", "block"); }
-
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function(event) { 
-    refreshRelatedItems();
-    setInterval(function(){ refreshRelatedItems(); console.log('Refreshed cart items.'); }, 1000);
-});
-
-</script>
+    // function to programmatically hide/show elements based on ID
+     function toggleItem (itemID, displayProp) {
+         $('#' + itemID).css("display", displayProp);
+     }
+ 
+     // related items
+     var item1 = {
+         "title":"EMist® EPIX360™ TruElectrostatic™ Disinfectant Sprayer",
+         "elementID":"related-item-1"
+     }
+     var item2 = {
+         "title":"Victory Innovations - Cordless Backpack Electrostatic Sprayer for Disinfecting",
+         "elementID":"related-item-2"
+     }
+     var item3 = {
+         "title":"EPA Registered COVID-19 Dissolvable Disinfecting Tablets (Effervescent) 100 Ct/​Bottle",
+         "elementID":"related-item-3"
+     }
+ 
+     //  store related items in array to loop through
+     var relatedItems = [item1, item2, item3];
+ 
+     function refreshRelatedItems () {
+       
+     // get current items in cart, store to variable
+     var itemsInCart = $('.cart-product-title-current').text();
+     // get current quantity of items in cart, store to variable
+     var quantityOfItemsInCart = $('.cart-product-title-current').length;
+       
+       if (quantityOfItemsInCart < 1) {
+           toggleItem('related-items-h4', 'none');
+       } else { toggleItem('related-items-h4', 'block'); }
+       
+         $.each(relatedItems, function(){
+           console.log(this.title);
+           console.log(this.elementID);
+           if(itemsInCart.includes(this.title)){
+              toggleItem(this.elementID, 'none');
+              console.log(this.elementID + ' set to display: none');
+           } else {
+               toggleItem(this.elementID, 'flex');
+               console.log(this.elementID + ' set to display: flex');
+           }
+         });
+     }
+     
+     document.addEventListener("DOMContentLoaded", function(event) { 
+           console.log('DOMContentLoaded');
+         refreshRelatedItems();
+         setInterval(function(){ refreshRelatedItems(); console.log('Refreshed cart items.'); }, 1000);
+     });
+     
+ </script>
