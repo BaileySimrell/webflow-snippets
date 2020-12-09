@@ -1,0 +1,13 @@
+<script>
+    // replace paragraph2 with class name of the text to be truncated
+    document.addEventListener("DOMContentLoaded", () => {
+      const maxCharacters = 100,
+      targets = document.getElementsByClassName("paragraph2");
+    
+      Array.from(targets).forEach((target) => {
+        const text = target.textContent,
+          truncate = text.substring(0, maxCharacters);
+        target.textContent = `${truncate}...`;
+      });
+    });
+</script>
