@@ -1,4 +1,5 @@
 <script>
+
     // function to round number to nearest .5
     function roundHalf(num) { return Math.round(num*2)/2; }
     function calculateAverageRating(){
@@ -17,17 +18,73 @@
             return a + b;
         }, 0);
 
-        console.log(ratingsOnPage);
-        console.log(sumOfRatings);
-
         // calculate average rating
         var averageRating = (sumOfRatings / ratingsCount);
-        console.log('Average rating for this item is: ' + averageRating + '.');
-        console.log('This rating rounded to the nearest .5 is -> ' + roundHalf(averageRating) + '.');
 
         // round average rating to the nearest .5
         averageRating = roundHalf(averageRating);
-        console.log(averageRating);
+
+        if (averageRating == 1){
+            $("#star-1").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            $("#star-outline-2").css("display", "block");
+            $("#star-outline-3").css("display", "block");
+            $("#star-outline-4").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 1.5){
+            $("#star-1").css("display", "block");
+            $("#star-half").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            $("#star-outline-2").css("display", "block");
+            $("#star-outline-3").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 2){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            $("#star-outline-2").css("display", "block");
+            $("#star-outline-3").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 2.5){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-half").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            $("#star-outline-2").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 3){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-3").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            $("#star-outline-2").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 3.5){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-3").css("display", "block");
+            $("#star-half").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 4){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-3").css("display", "block");
+            $("#star-outline-1").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 4.5){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-3").css("display", "block");
+            $("#star-4").css("display", "block");
+            $("#star-half").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        } else if (averageRating == 5){
+            $("#star-1").css("display", "block");
+            $("#star-2").css("display", "block");
+            $("#star-3").css("display", "block");
+            console.log('Average rating for this item is: ' + averageRating + '.');
+        }
 
     }
 
