@@ -1,0 +1,34 @@
+<script>
+    // function to round number to nearest .5
+    function roundHalf(num) { return Math.round(num*2)/2; }
+    function calculateAverageRating(){
+        
+        // get all instances of hidden rating on page, store length as ratingsCount
+        var ratingsCount = $('.review-star-rating-hidden').length;
+
+        // create empty array to store all ratings
+        var ratingsOnPage = [];
+        $('.review-star-rating-hidden').each(function(){
+            ratingsOnPage.push(parseInt(this.innerHTML));
+        });
+
+        // total up all of the ratings on the page for average calculation
+        var sumOfRatings = ratingsOnPage.reduce(function(a, b){
+            return a + b;
+        }, 0);
+
+        console.log(ratingsOnPage);
+        console.log(sumOfRatings);
+
+        // calculate average rating
+        var averageRating = (sumOfRatings / ratingsCount);
+        console.log('Average rating for this item is: ' + averageRating + '.');
+        console.log('This rating rounded to the nearest .5 is -> ' + roundHalf(averageRating) + '.');
+
+        // round average rating to the nearest .5
+        averageRating = roundHalf(averageRating);
+        console.log(averageRating);
+
+    }
+
+</script>
