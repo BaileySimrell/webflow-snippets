@@ -1,0 +1,26 @@
+<script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+
+<script type="application/javascript">
+
+function geoip(json){
+
+		var userip      = json.ip;
+    var countrycode = json.country_code;
+    var timezone      = json.timezone;
+    var country = json.country;
+    var city      = json.city;
+    var latitude = json.latitude;
+    var longitude = json.longitude;
+    
+    console.log (json.country_code);
+    console.log (json.ip);
+    
+    window.currentLocation = json;
+    console.log("User's current latitude: " + window.currentLocation.latitude);
+    console.log("User's current longitude: " + window.currentLocation.longitude);
+
+ }
+ 
+ // distance(41.439, -75.6827, 51.4976488, -0.1436883, K);
+ 
+</script>

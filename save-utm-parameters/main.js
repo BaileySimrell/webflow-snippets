@@ -25,3 +25,10 @@ var queryForm = function(settings){
 }
 
 setTimeout(function(){ queryForm(); }, 2400);
+
+function logFieldValues () {
+  console.log(document.getElementById('utm-source-field').value);
+  console.log(document.getElementById('utm-medium-field').value);
+  console.log(document.getElementById('utm-campaign-field').value);
+  console.log(document.getElementById('document-referrer-field').value);
+}

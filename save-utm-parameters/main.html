@@ -4,5 +4,5 @@
 <input id="document-referrer-field" type="hidden" name="document_referrer" value="">
 <script>
 // url key/value parser for UTMs and document.referrer;
-var queryForm=function(e){document.referrer;var t=!(!e||!e.reset)&&e.reset,r=window.location.toString().split("?");if(r.length>1){var n=r[1].split("&");for(m in n){var o=n[m].split("=");(t||null===sessionStorage.getItem(o[0]))&&sessionStorage.setItem(o[0],decodeURIComponent(o[1]))}}for(var i=document.querySelectorAll("input[type=hidden], input[type=text]"),m=0;m<i.length;m++){var s=sessionStorage.getItem(i[m].name);s&&(document.getElementsByName(i[m].name)[0].value=s)}document.getElementById("referrer-field").value=document.referrer};setTimeout(function(){queryForm()},2400);
+var queryForm=function(e){document.referrer;var t=!(!e||!e.reset)&&e.reset,r=window.location.toString().split("?");if(r.length>1){var n=r[1].split("&");for(m in n){var o=n[m].split("=");(t||null===sessionStorage.getItem(o[0]))&&sessionStorage.setItem(o[0],decodeURIComponent(o[1]))}}for(var i=document.querySelectorAll("input[type=hidden], input[type=text]"),m=0;m<i.length;m++){var s=sessionStorage.getItem(i[m].name);s&&(document.getElementsByName(i[m].name)[0].value=s)}document.getElementById("document-referrer-field").value=document.referrer};setTimeout(function(){queryForm()},2400);
 </script>
