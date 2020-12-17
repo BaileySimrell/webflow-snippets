@@ -21,7 +21,7 @@ var queryForm = function(settings){
       var param = sessionStorage.getItem(hiddenFields[i].name);
       if (param) document.getElementsByName(hiddenFields[i].name)[0].value = param;
     }
-    document.getElementById('referrer-field').value = document.referrer;
+    document.getElementById('document-referrer-field').value = document.referrer;
 }
 
 setTimeout(function(){ queryForm(); }, 2400);
