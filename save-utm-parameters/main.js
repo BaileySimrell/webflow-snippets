@@ -3,6 +3,7 @@
 // (if embedding in-line, place this snippet before the closing </body> inside of <script> </script> tags)
 
 var queryForm = function(settings){
+		var pageReferrer = document.referrer;
     var reset = settings && settings.reset ? settings.reset : false;
     var self = window.location.toString();
     var querystring = self.split("?");
@@ -20,6 +21,7 @@ var queryForm = function(settings){
       var param = sessionStorage.getItem(hiddenFields[i].name);
       if (param) document.getElementsByName(hiddenFields[i].name)[0].value = param;
     }
+    document.getElementById('referrer-field').value = document.referrer;
 }
 
-setTimeout(function(){ queryForm(); }, 3000);
+setTimeout(function(){ queryForm(); }, 2400);
