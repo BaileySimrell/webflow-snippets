@@ -8,3 +8,5 @@
   @supports not (backdrop-filter: blur(12px)) {
     .content {
       background-color: rgba(255, 255, 255, .8); } }
+
+      /* This code checks to see if backdrop-filter: blur is supported in current browser, sets style accordingly */
